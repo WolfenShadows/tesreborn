@@ -1,0 +1,137 @@
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+
+.rp-list li {
+    margin-bottom: 15px;
+}
+
+.rp-entry-container {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: .2em;
+  width: 100%;
+}
+
+.rp-entry {
+  flex: 1 1 auto;
+  max-width: 450px;
+}
+
+.rp-title {
+    margin-bottom: 0px;
+}
+
+.rp-metadata-container {
+  // Basis so that content wraps afterwards
+  flex: 1 0 auto;
+  text-align: right;
+
+  .rp-completion {
+    font-size: 1.125em;
+    text-align: center;
+    width: 1.5em;
+  }
+}
+
+.rp-complete { color: $light-green; }
+.rp-incomplete { color: $light-red; }
+
+// Styling for when the screen is too small
+// @include media-query($on-palm) {
+//     .rp-entry {
+//         flex-basis: $on-palm;
+//     }
+// }
+
+/* Undo normal pre styles */
+#log {
+
+    p {
+        margin: 0;
+        margin-top: 0.5em;
+    }
+
+    .rp { color: #DCDCCC; }
+    .ooc {
+        color: #A0A090;
+        white-space: pre-wrap;
+        font-family: monospace;
+        font-size: 80%;
+    }
+
+    /* timestamps */
+    a {
+        color: inherit;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+/* OOC toggling menu */
+.scroll-nav {
+    background: #222;
+    display: block;
+    @include transition(all, 0.25s, ease-in-out);
+    left: 0;
+    right: 0;
+    top: -2.5em;
+    line-height: 2.5em;
+    position: fixed;
+    text-align: center;
+
+    &.shown {
+        top: 0;
+    }
+
+    a,
+    #ooc_label {
+        padding: 0.5em;
+    }
+}
+
+#ooc_toggle {
+    vertical-align: middle;
+}
+
+
+a.rp-tag {
+    background-color: #333;
+    // border: 1px solid $text-color;
+    box-shadow: 0 0 2px 0px darken($text-color, 25%);
+    color: inherit;
+    display: inline-block;
+    margin-bottom: 0.25em;
+    padding: 0 0.25em;
+    white-space: nowrap;
+
+    &.rp-tag-character {
+        background-color: $dark-green;
+        // border: 1px solid $light-green;
+        box-shadow: 0 0 2px 0px darken($light-green, 25%);
+        color: $light-green;
+    }
+
+    &.rp-tag-meta {
+        background-color: $dark-red;
+        // border: 1px solid $light-red;
+        box-shadow: 0 0 2px 0px darken($light-red, 25%);
+        color: $light-red;
+    }
+
+    &:hover {
+
+    }
+}
+
+// Undo a styling for RP and arc titles
+.arc-title>a {
+    color: inherit;
+}

@@ -1,0 +1,9 @@
+---
+layout: page
+---
+
+<ul class="rp-list">
+{% for rp in page.pages %}
+  {% include rp.html rp=rp %}
+{% endfor %}
+</ul>
